@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color backColorDark = Colors.black54;
-const Color backColorLight = Colors.black26;
-const Color backColorMedium = Colors.black45;
-Color mainColor = Colors.deepOrange[200]!;
-Color mainColorLight = Colors.deepOrange[100]!;
+import 'app_light_colors.dart';
 
 ThemeData _themeLight = ThemeData.light();
 
@@ -19,59 +15,60 @@ ThemeData themeLight = _themeLight.copyWith(
   cardTheme: _cardLight(_themeLight.cardTheme),
   chipTheme: _chipLight(_themeLight.chipTheme),
   dialogTheme: _dialogLight(_themeLight.dialogTheme),
-  primaryColorDark: mainColor,
+  primaryColorDark: AppLightColors.mainColor,
   textTheme: _textLight(_themeLight.textTheme),
 );
 
 ColorScheme _schemeLight(ColorScheme base) {
   return base.copyWith(
-    primary: backColorDark,
-    onPrimary: mainColor,
-    primaryContainer: mainColor,
+    primary: AppLightColors.backColorDark,
+    onPrimary: AppLightColors.mainColor,
+    primaryContainer: AppLightColors.mainColor,
   );
 }
 
 TextTheme _textLight(TextTheme base) {
   return base.copyWith(
-    headline4: base.headline4!.copyWith(
+    headlineMedium: base.headlineMedium!.copyWith(
       fontSize: 24,
       fontWeight: FontWeight.w500,
-      color: backColorMedium,
+      color: AppLightColors.backColorMedium,
     ),
   );
 }
 
 AppBarTheme _appBarLight(AppBarTheme base) {
   return base.copyWith(
-    backgroundColor: backColorDark,
+    backgroundColor: AppLightColors.backColorDark,
     centerTitle: false,
-    foregroundColor: mainColor,
+    foregroundColor: AppLightColors.mainColor,
   );
 }
 
 BottomNavigationBarThemeData _botNavBarLight(
     BottomNavigationBarThemeData base) {
   return base.copyWith(
-    backgroundColor: backColorMedium,
-    selectedItemColor: mainColor,
+    backgroundColor: AppLightColors.backColorMedium,
+    selectedItemColor: AppLightColors.mainColor,
   );
 }
 
 ButtonStyle _buttonLight = ElevatedButton.styleFrom(
-    backgroundColor: mainColor,
+    backgroundColor: AppLightColors.mainColor,
     foregroundColor: Colors.black,
     shape: const StadiumBorder());
 
 InputDecorationTheme _textFieldLight(InputDecorationTheme base) {
   return base.copyWith(
-    floatingLabelStyle: TextStyle(color: mainColor),
+    floatingLabelStyle: const TextStyle(color: AppLightColors.mainColor),
     suffixIconColor: MaterialStateColor.resolveWith(
-      (Set<MaterialState> states) =>
-          states.contains(MaterialState.focused) ? mainColor : backColorMedium,
+      (Set<MaterialState> states) => states.contains(MaterialState.focused)
+          ? AppLightColors.mainColor
+          : AppLightColors.backColorMedium,
     ),
-    labelStyle: const TextStyle(color: backColorMedium),
-    focusedBorder:
-        UnderlineInputBorder(borderSide: BorderSide(color: mainColor)),
+    labelStyle: const TextStyle(color: AppLightColors.backColorMedium),
+    focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: AppLightColors.mainColor)),
   );
 }
 
@@ -81,7 +78,7 @@ CardTheme _cardLight(CardTheme base) {
     clipBehavior: Clip.hardEdge,
     elevation: 8,
     margin: const EdgeInsets.all(12),
-    color: mainColorLight,
+    color: AppLightColors.mainColorLight,
   );
 }
 
@@ -90,12 +87,12 @@ ChipThemeData _chipLight(ChipThemeData base) {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
     showCheckmark: false,
     padding: const EdgeInsets.all(8),
-    backgroundColor: backColorDark,
-    selectedColor: mainColor,
-    disabledColor: backColorLight,
+    backgroundColor: AppLightColors.backColorDark,
+    selectedColor: AppLightColors.mainColor,
+    disabledColor: AppLightColors.backColorLight,
     brightness: Brightness.dark,
     shadowColor: _themeLight.scaffoldBackgroundColor,
-    selectedShadowColor: backColorDark,
+    selectedShadowColor: AppLightColors.backColorDark,
     elevation: 8,
   );
 }
